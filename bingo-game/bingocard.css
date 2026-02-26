@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #8ca799;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+h1 {
+    margin: 10px 0 20px 0;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-style: italic; 
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.2); 
+}
+
+#bingo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    width: 100%;
+    max-width: 900px;
+    height: 80vh; /* Täidab enamuse ekraanist */
+    gap: 5px;
+}
+
+.square {
+    background-color: #8bd1b6;
+    border: 3px solid #4c1aef;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    overflow: hidden;   /* Et X-i jooned ei läheks üle ääre */
+    transition: background-color 0.3s ease;
+}
+
+.square.clicked {
+    background-color: #c682c5;
+}
+/* X on sirged jooned, mida pööratakse 45 kraadi */
+.square.clicked::before,
+.square.clicked::after {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 4px;
+    background-color: #673ce7;
+    top: 50%;
+    left: -25%;
+}
+  
+.square.clicked::before {
+    transform: rotate(45deg);
+}
+
+.square.clicked::after {
+    transform: rotate(-45deg);
+}
+
+.square span {
+    position: relative;
+    z-index: 1;
+    padding: 5px;
+    background-color: #8adebe(255, 255, 255, 0.7);
+    border-radius: 4px;
+    display: none;
+}
+
+.square.has-text span {
+    display: inline-block;
+}
+
+#new-game-btn {
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #673ce7;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#new-game-btn:hover {
+    background-color: #2980b9;
+}
+
+#new-game-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#bingo-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* scale(0) teeb selle nähtamatuks */
+    background-color: rgba(46, 204, 113, 0.95);
+    color: white;
+    font-size: 5rem;
+    font-weight: bold;
+    padding: 30px 60px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    pointer-events: none; /* Ei takista hiireklikkimist */
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Mõnus vetruv animatsioon ilmumisel */
+}
+
+#bingo-message.show {
+    transform: translate(-50%, -50%) scale(1);
+}
