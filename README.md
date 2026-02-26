@@ -1,4 +1,4 @@
-#  Bingo Game : JavaScript 
+#  Bingo Game : Java-Sprint 
 
 ## Custom fun phrases  
 
