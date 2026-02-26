@@ -1,4 +1,4 @@
-# One person browser JavaScript bingogame
+#  Bingo Game : JavaScript 
 
 ## Custom fun phrases  
 
