@@ -27,7 +27,7 @@ const bingoPhrases = [
     "Helistasid progejast sõbrale"
 ];
 
-// Defineerime kõik 12 võiduliini (indeksid 0 kuni 24)
+// Defineerime 12 võiduliini read ja diagonaalid, (indeksid 0 kuni 24)
 const winningCombinations = [
     // Horisontaalsed read
     [0, 1, 2, 3, 4], [5, 6, 7, 8, 9], [10, 11, 12, 13, 14], [15, 16, 17, 18, 19], [20, 21, 22, 23, 24],
@@ -115,7 +115,7 @@ for (let i = 0; i < totalSquares; i++) {
             // Lubame klikkida ainult siis, kui mäng pole veel võidetud
             if (!gameWon) {
                 this.classList.toggle('clicked');
-                checkWin(); // Pärast iga klikki kontrollime, kas tekkis võit
+                checkWin(); // Pärast iga klikki kontrollime, kas on Bingo rida
             }
         });
 
